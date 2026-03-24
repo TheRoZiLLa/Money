@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Smart personal finance tracker with AI-powered expense management">
+    <meta name="theme-color" content="#0F172A">
+    <title>Money Tracker – AI Finance Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+
+        <!-- ============ SCREEN 1: DASHBOARD ============ -->
+        <div id="screen-dashboard" class="screen active">
+            <header class="screen-header dashboard-header">
+                <div class="header-top">
+                    <div class="greeting">
+                        <span class="greeting-label">Good afternoon</span>
+                        <h1 class="greeting-name">Dominic</h1>
+                    </div>
+                    <div class="header-actions">
+                        <button class="icon-btn" id="btn-notifications" aria-label="Notifications">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><circle cx="18" cy="4" r="3" fill="#EF4444" stroke="none"/></svg>
+                        </button>
+                        <div class="avatar" id="btn-profile">D</div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="screen-content">
+                <!-- Balance Card -->
+                <div class="balance-card">
+                    <div class="balance-card-bg"></div>
+                    <div class="balance-content">
+                        <span class="balance-label">Total Balance</span>
+                        <h2 class="balance-amount">฿42,580.50</h2>
+                        <div class="balance-change positive">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                            <span>+12.5% from last month</span>
+                        </div>
+                    </div>
+                    <div class="balance-row">
+                        <div class="balance-item income">
+                            <div class="balance-icon-wrap income-bg">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                            </div>
+                            <div>
+                                <span class="balance-item-label">Income</span>
+                                <span class="balance-item-amount income-text">+฿65,000</span>
+                            </div>
+                        </div>
+                        <div class="balance-divider"></div>
+                        <div class="balance-item expense">
+                            <div class="balance-icon-wrap expense-bg">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                            </div>
+                            <div>
+                                <span class="balance-item-label">Expense</span>
+                                <span class="balance-item-amount expense-text">-฿22,419.50</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="section-header">
+                    <h3>Quick Stats</h3>
+                    <span class="section-period">March 2026</span>
+                </div>
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        </div>
+                        <span class="stat-value">24</span>
+                        <span class="stat-label">Transactions</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #DBEAFE, #BFDBFE);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </div>
+                        <span class="stat-value">฿748</span>
+                        <span class="stat-label">Daily Avg.</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #FCE7F3, #FBCFE8);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DB2777" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        </div>
+                        <span class="stat-value">Food</span>
+                        <span class="stat-label">Top Category</span>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="section-header">
+                    <h3>Recent Transactions</h3>
+                    <button class="see-all-btn" onclick="navigateTo('transactions')">See All</button>
+                </div>
+                <div class="transactions-list" id="dashboard-transactions">
+                    <!-- Populated by JS -->
+                </div>
+
+                <!-- AI Insights -->
+                <div class="section-header">
+                    <h3>AI Insights</h3>
+                    <span class="ai-badge">✨ AI</span>
+                </div>
+                <div class="ai-insight-card">
+                    <div class="ai-insight-icon">🧠</div>
+                    <div class="ai-insight-content">
+                        <p class="ai-insight-text">Your food spending increased <strong>18%</strong> compared to last month. Consider setting a budget limit for dining out.</p>
+                        <button class="ai-insight-action">Set Budget →</button>
+                    </div>
+                </div>
+                <div class="ai-insight-card">
+                    <div class="ai-insight-icon">📊</div>
+                    <div class="ai-insight-content">
+                        <p class="ai-insight-text">You saved <strong>฿3,200</strong> more than February. Great job keeping transport costs low!</p>
+                    </div>
+                </div>
+
+                <div class="bottom-spacer"></div>
+            </main>
+        </div>
+
+        <!-- ============ SCREEN 2: TRANSACTION LIST ============ -->
+        <div id="screen-transactions" class="screen">
+            <header class="screen-header">
+                <div class="header-top">
+                    <h1 class="page-title">Transactions</h1>
+                    <div class="header-actions">
+                        <button class="icon-btn" id="btn-search-toggle" aria-label="Search">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </button>
+                        <button class="icon-btn" id="btn-filter" aria-label="Filter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Search Bar -->
+                <div class="search-bar hidden" id="search-bar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" placeholder="Search transactions..." id="search-input" autocomplete="off">
+                    <button class="search-clear" id="search-clear">✕</button>
+                </div>
+                <!-- Category Chips -->
+                <div class="category-chips" id="category-chips">
+                    <button class="chip active" data-category="all">All</button>
+                    <button class="chip" data-category="food">🍔 Food</button>
+                    <button class="chip" data-category="transport">🚗 Transport</button>
+                    <button class="chip" data-category="bills">📄 Bills</button>
+                    <button class="chip" data-category="shopping">🛍️ Shopping</button>
+                    <button class="chip" data-category="health">💊 Health</button>
+                    <button class="chip" data-category="entertainment">🎮 Entertainment</button>
+                    <button class="chip" data-category="income">💰 Income</button>
+                </div>
+                <!-- Date Filter -->
+                <div class="date-filter hidden" id="date-filter">
+                    <div class="date-input-group">
+                        <label>From</label>
+                        <input type="date" id="filter-from" value="2026-03-01">
+                    </div>
+                    <div class="date-input-group">
+                        <label>To</label>
+                        <input type="date" id="filter-to" value="2026-03-24">
+                    </div>
+                    <button class="date-apply-btn" id="date-apply">Apply</button>
+                </div>
+            </header>
+            <main class="screen-content">
+                <div class="transactions-list" id="all-transactions">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="bottom-spacer"></div>
+            </main>
+        </div>
+
+        <!-- ============ SCREEN 3: ADD TRANSACTION ============ -->
+        <div id="screen-add" class="screen">
+            <header class="screen-header">
+                <div class="header-top">
+                    <button class="back-btn" onclick="navigateTo('dashboard')">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <h1 class="page-title">Add Transaction</h1>
+                    <div style="width:36px"></div>
+                </div>
+            </header>
+            <main class="screen-content">
+                <!-- Import Options -->
+                <div class="import-options">
+                    <button class="import-option active" data-method="manual" id="tab-manual">
+                        <div class="import-icon">✏️</div>
+                        <span>Manual</span>
+                    </button>
+                    <button class="import-option" data-method="slip" id="tab-slip">
+                        <div class="import-icon">📷</div>
+                        <span>Upload Slip</span>
+                    </button>
+                    <button class="import-option" data-method="email" id="tab-email">
+                        <div class="import-icon">📧</div>
+                        <span>Email Import</span>
+                    </button>
+                </div>
+
+                <!-- Manual Entry Form -->
+                <div class="add-form" id="form-manual">
+                    <div class="type-toggle">
+                        <button class="type-btn active expense-active" data-type="expense" id="type-expense">Expense</button>
+                        <button class="type-btn" data-type="income" id="type-income">Income</button>
+                        <div class="type-slider"></div>
+                    </div>
+
+                    <div class="amount-input-wrap">
+                        <span class="currency-symbol">฿</span>
+                        <input type="number" id="input-amount" class="amount-input" placeholder="0.00" step="0.01">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input type="text" id="input-description" class="form-input" placeholder="e.g., Lunch at Sushi Express">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <div class="category-selector" id="category-selector">
+                            <button class="cat-option" data-cat="food"><span class="cat-emoji">🍔</span><span>Food</span></button>
+                            <button class="cat-option" data-cat="transport"><span class="cat-emoji">🚗</span><span>Transport</span></button>
+                            <button class="cat-option" data-cat="bills"><span class="cat-emoji">📄</span><span>Bills</span></button>
+                            <button class="cat-option" data-cat="shopping"><span class="cat-emoji">🛍️</span><span>Shopping</span></button>
+                            <button class="cat-option" data-cat="health"><span class="cat-emoji">💊</span><span>Health</span></button>
+                            <button class="cat-option" data-cat="entertainment"><span class="cat-emoji">🎮</span><span>Fun</span></button>
+                            <button class="cat-option" data-cat="salary"><span class="cat-emoji">💰</span><span>Salary</span></button>
+                            <button class="cat-option" data-cat="other"><span class="cat-emoji">📦</span><span>Other</span></button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Date</label>
+                        <input type="date" id="input-date" class="form-input" value="2026-03-24">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Notes <span class="optional">(optional)</span></label>
+                        <textarea id="input-notes" class="form-input form-textarea" placeholder="Add any additional notes..." rows="3"></textarea>
+                    </div>
+
+                    <button class="save-btn" id="btn-save-transaction">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Save Transaction
+                    </button>
+                </div>
+
+                <!-- Upload Slip Panel -->
+                <div class="add-form hidden" id="form-slip">
+                    <div class="upload-zone" id="upload-zone">
+                        <div class="upload-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        </div>
+                        <p class="upload-text">Tap to upload receipt or slip</p>
+                        <p class="upload-hint">Supports JPG, PNG, PDF</p>
+                        <input type="file" id="file-upload" accept="image/*,.pdf" hidden>
+                    </div>
+
+                    <div class="ai-processing hidden" id="ai-processing">
+                        <div class="ai-spinner"></div>
+                        <p>AI is scanning your receipt...</p>
+                    </div>
+
+                    <button class="save-btn secondary" id="btn-scan-slip" onclick="simulateAIScan()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        Scan with AI
+                    </button>
+                </div>
+
+                <!-- Email Import Panel -->
+                <div class="add-form hidden" id="form-email">
+                    <div class="email-connect-card">
+                        <div class="email-provider">
+                            <div class="provider-icon gmail">G</div>
+                            <div>
+                                <strong>Gmail</strong>
+                                <span class="provider-status connected">Connected</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="email-provider">
+                            <div class="provider-icon outlook">O</div>
+                            <div>
+                                <strong>Outlook</strong>
+                                <span class="provider-status">Not connected</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="email-pending">
+                        <h4>Pending Imports <span class="badge">3</span></h4>
+                        <div class="email-item" onclick="navigateTo('ai-review')">
+                            <div class="email-item-icon">📧</div>
+                            <div class="email-item-content">
+                                <strong>AIS Fiber - Monthly Bill</strong>
+                                <span>฿599.00 • Mar 15, 2026</span>
+                            </div>
+                            <span class="email-item-arrow">→</span>
+                        </div>
+                        <div class="email-item" onclick="navigateTo('ai-review')">
+                            <div class="email-item-icon">📧</div>
+                            <div class="email-item-content">
+                                <strong>True Money Wallet Top-up</strong>
+                                <span>฿1,000.00 • Mar 14, 2026</span>
+                            </div>
+                            <span class="email-item-arrow">→</span>
+                        </div>
+                        <div class="email-item" onclick="navigateTo('ai-review')">
+                            <div class="email-item-icon">📧</div>
+                            <div class="email-item-content">
+                                <strong>Shopee Order Confirmation</strong>
+                                <span>฿450.00 • Mar 13, 2026</span>
+                            </div>
+                            <span class="email-item-arrow">→</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-spacer"></div>
+            </main>
+        </div>
+
+        <!-- ============ SCREEN 4: AI REVIEW ============ -->
+        <div id="screen-ai-review" class="screen">
+            <header class="screen-header">
+                <div class="header-top">
+                    <button class="back-btn" onclick="navigateTo('add')">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <h1 class="page-title">AI Review</h1>
+                    <span class="ai-badge header-badge">✨ AI</span>
+                </div>
+            </header>
+            <main class="screen-content">
+                <div class="ai-review-banner">
+                    <div class="ai-review-icon">🤖</div>
+                    <p>AI has extracted the following details. Please review and edit before saving.</p>
+                </div>
+
+                <div class="ai-confidence">
+                    <span>Confidence</span>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" style="width: 92%"></div>
+                    </div>
+                    <span class="confidence-value">92%</span>
+                </div>
+
+                <div class="ai-review-form">
+                    <div class="form-group">
+                        <label class="form-label">AI-Generated Description</label>
+                        <div class="ai-field">
+                            <input type="text" class="form-input ai-input" value="AIS Fiber Internet – Monthly subscription payment for March 2026" id="ai-description">
+                            <span class="ai-field-tag">AI ✨</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Amount</label>
+                        <div class="ai-field">
+                            <input type="text" class="form-input ai-input" value="฿599.00" id="ai-amount">
+                            <span class="ai-field-tag">AI ✨</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <div class="ai-field">
+                            <select class="form-input ai-input" id="ai-category">
+                                <option value="bills" selected>📄 Bills & Utilities</option>
+                                <option value="food">🍔 Food & Dining</option>
+                                <option value="transport">🚗 Transport</option>
+                                <option value="shopping">🛍️ Shopping</option>
+                                <option value="health">💊 Health</option>
+                                <option value="entertainment">🎮 Entertainment</option>
+                            </select>
+                            <span class="ai-field-tag">AI ✨</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Date</label>
+                        <div class="ai-field">
+                            <input type="date" class="form-input ai-input" value="2026-03-15" id="ai-date">
+                            <span class="ai-field-tag">AI ✨</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Source</label>
+                        <div class="source-tag">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            Email: noreply@ais.th
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">AI Summary</label>
+                        <div class="ai-summary-box">
+                            <p>"Monthly internet bill from AIS Fiber for the home broadband plan (1 Gbps). Payment automatically processed through linked bank account. This is a recurring expense that appears on the 15th of every month."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-review-actions">
+                    <button class="save-btn" id="btn-approve-ai">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Approve & Save
+                    </button>
+                    <button class="save-btn secondary" id="btn-reject-ai">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        Discard
+                    </button>
+                </div>
+
+                <div class="bottom-spacer"></div>
+            </main>
+        </div>
+
+        <!-- ============ SCREEN 5: ANALYTICS ============ -->
+        <div id="screen-analytics" class="screen">
+            <header class="screen-header">
+                <div class="header-top">
+                    <h1 class="page-title">Analytics</h1>
+                    <div class="period-selector" id="period-selector">
+                        <button class="period-btn active" data-period="week">Week</button>
+                        <button class="period-btn" data-period="month">Month</button>
+                        <button class="period-btn" data-period="year">Year</button>
+                    </div>
+                </div>
+            </header>
+            <main class="screen-content">
+                <!-- Spending Overview -->
+                <div class="analytics-card">
+                    <h4>Spending Overview</h4>
+                    <div class="chart-container" id="spending-chart">
+                        <canvas id="canvas-spending" width="360" height="200"></canvas>
+                    </div>
+                </div>
+
+                <!-- Category Breakdown -->
+                <div class="analytics-card">
+                    <h4>Category Breakdown</h4>
+                    <div class="donut-chart-container">
+                        <canvas id="canvas-donut" width="200" height="200"></canvas>
+                        <div class="donut-center">
+                            <span class="donut-total">฿22,420</span>
+                            <span class="donut-label">Total Spent</span>
+                        </div>
+                    </div>
+                    <div class="category-breakdown-list" id="category-breakdown">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Trend -->
+                <div class="analytics-card">
+                    <h4>Income vs Expense</h4>
+                    <div class="chart-container" id="trend-chart">
+                        <canvas id="canvas-trend" width="360" height="180"></canvas>
+                    </div>
+                </div>
+
+                <!-- Top Expenses -->
+                <div class="analytics-card">
+                    <h4>Top Expenses This Month</h4>
+                    <div class="top-expenses" id="top-expenses">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="bottom-spacer"></div>
+            </main>
+        </div>
+
+        <!-- ============ SCREEN 6: SETTINGS ============ -->
+        <div id="screen-settings" class="screen">
+            <header class="screen-header">
+                <div class="header-top">
+                    <h1 class="page-title">Settings</h1>
+                </div>
+            </header>
+            <main class="screen-content">
+                <div class="settings-section">
+                    <h4 class="settings-title">Account</h4>
+                    <div class="settings-card">
+                        <div class="settings-item">
+                            <div class="settings-item-left">
+                                <div class="settings-icon" style="background: linear-gradient(135deg, #818CF8, #6366F1);">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                </div>
+                                <div>
+                                    <span class="settings-item-title">Profile</span>
+                                    <span class="settings-item-subtitle">Dominic • dom@email.com</span>
+                                </div>
+                            </div>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h4 class="settings-title">Data Management</h4>
+                    <div class="settings-card">
+                        <div class="settings-item">
+                            <div class="settings-item-left">
+                                <div class="settings-icon" style="background: linear-gradient(135deg, #F87171, #EF4444);">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                </div>
+                                <div>
+                                    <span class="settings-item-title">Auto-delete old records</span>
+                                    <span class="settings-item-subtitle">Remove transactions older than 1 year</span>
+                                </div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-autodelete" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-divider"></div>
+                        <div class="settings-item">
+                            <div class="settings-item-left">
+                                <div class="settings-icon" style="background: linear-gradient(135deg, #34D399, #10B981);">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                </div>
+                                <div>
+                                    <span class="settings-item-title">Export Data</span>
+                                    <span class="settings-item-subtitle">CSV, PDF, or JSON format</span>
+                                </div>
+                            </div>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                        <div class="settings-divider"></div>
+                        <div class="settings-item">
+                            <div class="settings-item-left">
+                                <div class="settings-icon" style="background: linear-gradient(135deg, #60A5FA, #3B82F6);">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                                </div>
+                                <div>
+                                    <span class="settings-item-title">Backup & Sync</span>
+                                    <span class="settings-item-subtitle">Last synced: Today, 13:45</span>
+                                </div>
+                            </div>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h4 class="settings-title">Email Integration</h4>
+                    <div class="settings-card">
+                        <div class="settings-item">
+                            <div class="settings-item-left">
+                                <div class="settings-icon" style="background: linear-gradient(135deg, #FB923C, #F97316);">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </div>
+                                <div>
+                                    <span class="settings-item-title">Email Scanning</span>
+                                    <span class="settings-item-subtitle">Auto-detect bill payment emails</span>
+                                </div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-email-scan" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-divider"></div>
+                        <div class="settings-item">
+                            <div class="settings-item-left">
+                                <div class="settings-icon" style="background: linear-gradient(135deg, #A78BFA, #8B5CF6);">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                </div>
+                                <div>
+                                    <span class="settings-item-title">Receipt Processing</span>
+                                    <span class="settings-item-subtitle">AI-powered OCR for uploaded slips</span>
+                                </div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-receipt-ocr" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h4 class="settings-title">Notifications</h4>
+                    <div class="settings-card">
+                        <div class="settings-item">
+                            <div class="settings-item-left">
+                                <div class="settings-icon" style="background: linear-gradient(135deg, #FBBF24, #F59E0B);">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                                </div>
+                                <div>
+                                    <span class="settings-item-title">Push Notifications</span>
+                                    <span class="settings-item-subtitle">New imports, budget alerts</span>
+                                </div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-notifications" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-divider"></div>
+                        <div class="settings-item">
+                            <div class="settings-item-left">
+                                <div class="settings-icon" style="background: linear-gradient(135deg, #F472B6, #EC4899);">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                </div>
+                                <div>
+                                    <span class="settings-item-title">Weekly Summary</span>
+                                    <span class="settings-item-subtitle">Every Monday at 9:00 AM</span>
+                                </div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-weekly">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h4 class="settings-title">Categories</h4>
+                    <div class="settings-card">
+                        <div class="category-manage-list">
+                            <div class="category-manage-item">
+                                <span>🍔 Food & Dining</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            </div>
+                            <div class="category-manage-item">
+                                <span>🚗 Transport</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            </div>
+                            <div class="category-manage-item">
+                                <span>📄 Bills & Utilities</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            </div>
+                            <div class="category-manage-item">
+                                <span>🛍️ Shopping</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            </div>
+                            <div class="category-manage-item">
+                                <span>💊 Health</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            </div>
+                            <div class="category-manage-item">
+                                <span>🎮 Entertainment</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            </div>
+                        </div>
+                        <button class="add-category-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Add New Category
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h4 class="settings-title">Appearance</h4>
+                    <div class="settings-card">
+                        <div class="settings-item">
+                            <div class="settings-item-left">
+                                <div class="settings-icon" style="background: linear-gradient(135deg, #1E293B, #334155);">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                                </div>
+                                <div>
+                                    <span class="settings-item-title">Dark Mode</span>
+                                    <span class="settings-item-subtitle">Switch to dark theme</span>
+                                </div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-darkmode">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="settings-version">Money Tracker v2.1.0 • Made with ✨ AI</p>
+                <div class="bottom-spacer"></div>
+            </main>
+        </div>
+
+        <!-- ============ FLOATING ACTION BUTTON ============ -->
+        <button class="fab" id="fab" onclick="navigateTo('add')" aria-label="Add transaction">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+
+        <!-- ============ BOTTOM NAVIGATION ============ -->
+        <nav class="bottom-nav" id="bottom-nav">
+            <button class="nav-item active" data-screen="dashboard" id="nav-dashboard">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" data-screen="transactions" id="nav-transactions">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                <span>History</span>
+            </button>
+            <div class="nav-spacer"></div>
+            <button class="nav-item" data-screen="analytics" id="nav-analytics">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <span>Analytics</span>
+            </button>
+            <button class="nav-item" data-screen="settings" id="nav-settings">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                <span>Settings</span>
+            </button>
+        </nav>
+
+        <!-- ============ TOAST NOTIFICATION ============ -->
+        <div class="toast hidden" id="toast">
+            <div class="toast-icon">✓</div>
+            <span class="toast-message" id="toast-message">Transaction saved!</span>
+        </div>
+
+        <!-- ============ TRANSACTION DETAIL MODAL ============ -->
+        <div class="modal-overlay hidden" id="modal-overlay">
+            <div class="modal" id="transaction-modal">
+                <div class="modal-header">
+                    <h3 id="modal-title">Transaction Details</h3>
+                    <button class="modal-close" id="modal-close">✕</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Dynamic content -->
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn edit" id="modal-edit">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        Edit
+                    </button>
+                    <button class="modal-btn delete" id="modal-delete">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
