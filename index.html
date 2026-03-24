@@ -693,10 +693,6 @@
             </main>
         </div>
 
-        <!-- ============ FLOATING ACTION BUTTON ============ -->
-        <button class="fab" id="fab" onclick="navigateTo('add')" aria-label="Add transaction">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
 
         <!-- ============ BOTTOM NAVIGATION ============ -->
         <nav class="bottom-nav" id="bottom-nav">
@@ -708,7 +704,11 @@
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
                 <span>History</span>
             </button>
-            <div class="nav-spacer"></div>
+            <button class="nav-item nav-add-btn" data-screen="add" id="nav-add" onclick="navigateTo('add')">
+                <div class="nav-add-circle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </div>
+            </button>
             <button class="nav-item" data-screen="analytics" id="nav-analytics">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
                 <span>Analytics</span>
