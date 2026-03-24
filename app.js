@@ -292,7 +292,6 @@ let transactions = [...sampleTransactions];
 function navigateTo(screen) {
     const screens = document.querySelectorAll('.screen');
     const navItems = document.querySelectorAll('.nav-item');
-    const fab = document.getElementById('fab');
 
     screens.forEach(s => s.classList.remove('active'));
 
@@ -308,14 +307,6 @@ function navigateTo(screen) {
             item.classList.add('active');
         }
     });
-
-    // Show/hide FAB
-    const hideFabScreens = ['add', 'ai-review'];
-    if (hideFabScreens.includes(screen)) {
-        fab.classList.add('hide');
-    } else {
-        fab.classList.remove('hide');
-    }
 
     // Show/hide nav
     const hideNavScreens = ['add', 'ai-review'];
